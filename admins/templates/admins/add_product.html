@@ -1,0 +1,121 @@
+{% extends 'admins/base.html' %}
+{% block content %}
+{% load static %}
+<div class="main-panel">
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h3 class="page-title"> Form elements </h3>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Forms</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+          </ol>
+        </nav>
+      </div>
+      {% if messages %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      {% for message in messages %}
+       {{ message }}
+      {% endfor%}
+       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+         {% comment %} <span aria-hidden="true">&times;</span> {% endcomment %}
+       </button>
+     </div>
+   {% endif %}
+<div class="row">
+    <div class="col-md-8 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Add Product </h4>
+          <!-- <p class="card-description"> Basic form layout </p>  -->
+          <form class="forms-sample" enctype = "multipart/form-data"  method="POST" id="productCreateForm" data-subcategory-url="{% url 'ajax_load_subcategory' %}" novalidate>
+              {% csrf_token %}
+            
+              <div class="form-group">
+                <label for="exampleInputUsername1">Category</label>
+                <div class="col-sm-9">{{form.category}}</div>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputUsername1">Sub Category</label>
+                <div class="col-sm-9">{{form.subCategory}}</div>
+              </div>
+            <div class="form-group">
+              <label for="exampleInputUsername1">Name</label>
+              <div class="col-sm-9">{{form.name}}</div>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Slug</label>
+              <div class="col-sm-9">{{form.slug}}</div>
+            </div> 
+              <div class="form-group">
+                <label for="exampleInputEmail1">Description</label>
+                <div class="col-sm-9">{{form.description}}</div>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Price</label>
+                <div class="col-sm-9">{{form.price}}</div>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Stock</label>
+                <div class="col-sm-9">{{form.stock}}</div>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Section</label>
+                <div class="col-sm-9">{{form.section}}</div>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Brand</label>
+                <div class="col-sm-9">{{form.brand}}</div>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Availability</label>
+                <div class="col-sm-9">{{form.is_available}}</div>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Image</label>
+                <div class="col-sm-9">{{form.image}}</div>
+              </div> 
+            <button type="submit" class="btn btn-primary mr-2">Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+<!-- content-wrapper ends -->
+<!-- partial:../../partials/_footer.html -->
+<footer class="footer">
+ <div class="d-sm-flex justify-content-center justify-content-sm-between">
+    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"></span>  
+    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank"></a></span> 
+  </div>
+</footer> 
+<!-- partial -->
+<!-- </div> -->
+<!-- main-panel ends -->
+<!-- </div> -->
+<!-- page-body-wrapper ends -->
+<!-- </div> -->
+<!-- container-scroller -->
+<!-- plugins:js -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+  $("#id_category").change(function () {
+    var url = $("#productCreateForm").attr("data-subcategory-url");  // get the url of the `load_cities` view
+    var categoryId = $(this).val();  // get the selected country ID from the HTML input
+
+    $.ajax({                       // initialize an AJAX request
+      url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+      data: {
+        'category': categoryId       // add the country id to the GET parameters
+      },
+      success: function (data) {   // `data` is the return of the `load_cities` view function
+        $("#id_subCategory").html(data);  // replace the contents of the city input with the data that came from the server
+      }
+    });
+
+  });
+</script>
+
+
+
+{% endblock %}

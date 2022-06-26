@@ -1,0 +1,184 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>EShopper - Bootstrap Shop Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.icon' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body style="background-color: rgb(251, 236, 215);">
+    <!-- Topbar Start -->
+    <div class="container-fluid">
+        <div class="row bg-secondary py-2 px-xl-5">
+            <div class="col-lg-6 d-none d-lg-block">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-dark" href="">FAQs</a>
+                    <span class="text-muted px-2">|</span>
+                    <a class="text-dark" href="">Help</a>
+                    <span class="text-muted px-2">|</span>
+                    <a class="text-dark" href="">Support</a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+                {% comment %} <div class="d-inline-flex align-items-center">
+                    <a class="text-dark px-2" href="">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a class="text-dark px-2" href="">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a class="text-dark px-2" href="">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a class="text-dark px-2" href="">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a class="text-dark pl-2" href="">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div> {% endcomment %}
+            </div>
+        </div>
+         <div class="row align-items-center py-3 px-xl-5"> 
+            <div class="col-lg-3 d-none d-lg-block">
+                <a href="" class="text-decoration-none">
+                    <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1"></span>Scarlet</h1>
+                </a>
+            </div>
+            <!-- <div class="col-lg-6 col-6 text-left">
+                <form action="{% url 'search'%}" class="search" method='GET'>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for products" name="keyword">
+                        <div class="input-group-append"> -->
+                            <!-- <span class="input-group-text bg-transparent text-primary"> -->
+                                <!-- <button class="btn btn-primary " type="submit">
+                                <i class="fa fa-search"></i>
+                            </button> -->
+                            <!-- </span> -->
+                        <!-- </div>
+                    </div>
+                </form>
+            </div> -->
+            <!-- <div class="col-lg-3 col-6 text-right">
+                <a href="{% url 'wish_list' %}" class="btn border">
+                    <i class="fas fa-heart text-primary"></i>
+                    <span class="badge">0</span>
+                </a>
+                <a href="{% url 'cart' %}" class="btn border">
+                    <i class="fas fa-shopping-cart text-primary"></i>
+                    <span class="badge">{{cart_count}}</span>
+                </a>
+            </div> -->
+         </div> 
+    </div>
+
+<div style="margin-top: 25px;">
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
+<div class="container bootdey">
+    <div class="panel panel-default panel-order">
+        <div class="panel-heading" style="margin-bottom: 25px;">
+            <strong>Order history</strong>
+            <div class="btn-group pull-right">
+                <div class="btn-group" style="margin-bottom: 25px;">
+                    <!-- <div class="btn btn-default btn-xs dropdown-toggle" style="margin-bottom: 25px;"  >Filter history </div> -->
+                    <!-- <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#">Approved orders</a></li>
+                        <li><a href="#">Pending orders</a></li>
+                    </ul> -->
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+        {% for x in order_product %}
+            <div class="row">
+                <div class="col-md-1"><img src="{{ x.Product.image.url}}" class="media-object img-thumbnail" /></div>
+                <div class="col-md-11">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="pull-right"><label class="label label-info">{{x.order.status}}</label></div>
+                            <span><strong>{{x.Product.name}}</strong></span><br />
+                            Quantity :{{x.quantity}}<br> cost: ₹{{x.product_price}}<br />
+                            <!-- <a data-placement="top" class="btn btn-success btn-xs glyphicon glyphicon-ok" href="#" title="View"></a>
+                            <a data-placement="top" class="btn btn-danger btn-xs glyphicon glyphicon-trash" href="#" title="Danger"></a>
+                            <a data-placement="top" class="btn btn-info btn-xs glyphicon glyphicon-usd" href="#" title="Danger"></a> -->
+                        </div>
+                        <div class="col-md-12">order made on: {{ x.created_at }} </div><hr style="border:bold">
+                    </div>
+                    {%if x.order.status == 'Delivered' %}
+                    <a href="{% url 'review' x.id %}"><button style="width: 150px; height:35px; margin-top:20px; background:#D19C97" type="submit">Add Review</button></a>
+                    {%endif%}
+                
+                </div>
+            </div>
+            {% endfor %}
+          
+        <!-- </div>
+        <div class="panel-footer">Put here some note for example: bootdey si a gallery of free bootstrap snippets bootdeys</div>
+    </div> -->
+</div>
+</div>
+<style>
+    body{
+        background:#eee;
+        }
+        .panel-order .row {
+            border-bottom: 1px solid #ccc;
+        }
+        .panel-order .row:last-child {
+            border: 0px;
+        }
+        .panel-order .row .col-md-1  {
+            text-align: center;
+            padding-top: 15px;
+        }
+        .panel-order .row .col-md-1 img {
+            width: 50px;
+            max-height: 50px;
+        }
+        .panel-order .row .row {
+            border-bottom: 0;
+        }
+        .panel-order .row .col-md-11 {
+            border-left: 1px solid #ccc;
+        }
+        .panel-order .row .row .col-md-12 {
+            padding-top: 7px;
+            padding-bottom: 7px; 
+        }
+        .panel-order .row .row .col-md-12:last-child {
+            font-size: 11px; 
+            color: #555;  
+            background: #efefef;
+        }
+        .panel-order .btn-group {
+            margin: 0px;
+            padding: 0px;
+        }
+        .panel-order .panel-body {
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+        .panel-order .panel-deading {
+            margin-bottom: 0;
+        }  
+</style>
