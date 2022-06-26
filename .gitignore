@@ -2,3 +2,4 @@
 .server_env
 media/
 __pycache__/
+asset/
