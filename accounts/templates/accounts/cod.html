@@ -29,7 +29,7 @@
 <body>
     <!-- Topbar Start -->
     <div class="container-fluid">
-        <div class="row bg-secondary py-2 px-xl-5">
+        {% comment %} <div class="row bg-secondary py-2 px-xl-5">
             <div class="col-lg-6 d-none d-lg-block">
                 <div class="d-inline-flex align-items-center">
                     <a class="text-dark" href="">FAQs</a>
@@ -38,8 +38,8 @@
                     <span class="text-muted px-2">|</span>
                     <a class="text-dark" href="">Support</a>
                 </div>
-            </div>
-            <div class="col-lg-6 text-center text-lg-right">
+            </div> {% endcomment %}
+            {% comment %} <div class="col-lg-6 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
                     <a class="text-dark px-2" href="">
                         <i class="fab fa-facebook-f"></i>
@@ -57,7 +57,7 @@
                         <i class="fab fa-youtube"></i>
                     </a>
                 </div>
-            </div>
+            </div> {% endcomment %}
         </div>
         <div class="row align-items-center py-3 px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
@@ -78,11 +78,11 @@
                 </form>
             </div>
             <div class="col-lg-3 col-6 text-right">
-                <a href="" class="btn border">
+                <a href="{% url 'wish_list' %}" class="btn border">
                     <i class="fas fa-heart text-primary"></i>
                     <span class="badge">0</span>
                 </a>
-                <a href="/accounts/cart" class="btn border">
+                <a href="{% url 'cart' %}" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
                     <span class="badge">{{cart_count}}</span>
                 </a>
@@ -123,8 +123,8 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="index.html" class="nav-item nav-link active">Home</a>
-                            <a href="/accounts/shop" class="nav-item nav-link">Shop</a>
+                            <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
+                            <a href="{% url 'shop' %}" class="nav-item nav-link">Shop</a>
                             <!-- <a href="detail.html" class="nav-item nav-link">Shop Detail</a> -->
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
