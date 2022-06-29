@@ -48,8 +48,8 @@ def product_chart(request):
     return JsonResponse(data={
         'labels': labels,
         'data': data,
-    })     
-
+    })    
+     
 def brand_chart(request):
     labels = []
     data = []  
@@ -101,11 +101,13 @@ def manage_category(request):
 
     return render(request,'admins/manage_category.html',context)
 
+@user_passes_test(lambda u: u in acc, login_url = 'admin_login')
 def delete_category(request,id):
     category = Category.objects.get(id=id)
     category.delete()
-    return redirect('manage_category')  
+    return redirect('manage_category')
 
+@user_passes_test(lambda u: u in acc, login_url = 'admin_login')
 def edit_category(request,slug):
     category = Category.objects.get(slug=slug)
     form = CategoryEditForm(instance=category)
@@ -124,7 +126,7 @@ def edit_category(request,slug):
     }          
     return render(request,'admins/edit_category.html',context)        
         
-
+@user_passes_test(lambda u: u in acc, login_url = 'admin_login')
 def add_category(request):
     form = CategoryEditForm
     try:
@@ -157,11 +159,13 @@ def manage_subcategory(request):
 
     return render(request,'admins/manage_subcategory.html',context)    
 
+@user_passes_test(lambda u: u in acc, login_url = 'admin_login')
 def delete_subcategory(request,id):
     subcategory = SubCategory.objects.get(id=id)
     subcategory.delete()
     return redirect('manage_subcategory')
 
+@user_passes_test(lambda u: u in acc, login_url = 'admin_login')
 def edit_subcategory(request,slug):
     subcategory = SubCategory.objects.get(slug=slug)
     form = SubCategoryEditForm(instance=subcategory)   
@@ -180,7 +184,7 @@ def edit_subcategory(request,slug):
     }  
     return render(request,'admins/edit_subcategory.html',context)  
 
-
+@user_passes_test(lambda u: u in acc, login_url = 'admin_login')
 def add_subcategory(request):
     form = SubCategoryEditForm
     try:
@@ -212,6 +216,7 @@ def manage_product(request):
     }  
     return render(request,'admins/manage_product.html',context) 
 
+@user_passes_test(lambda u: u in acc, login_url = 'admin_login')
 def add_product(request):
     form = productCreateForm
     try:
@@ -231,13 +236,15 @@ def add_product(request):
 def load_subcategory(request):
     category_id = request.GET.get('category')
     subcategory = SubCategory.objects.filter(category_id=category_id).order_by('name')
-    return render(request,'admins/dropdown.html', {'subcategory': subcategory})          
+    return render(request,'admins/dropdown.html', {'subcategory': subcategory})   
 
+@user_passes_test(lambda u: u in acc, login_url = 'admin_login')
 def delete_product(request,id):
     Product = product.objects.get(id=id)
     Product.delete()
     return redirect('manage_product')
 
+@user_passes_test(lambda u: u in acc, login_url = 'admin_login')
 def edit_product(request,slug):
     Product = product.objects.get(slug=slug)
     form = productCreateForm(instance=Product)
@@ -273,13 +280,15 @@ def manage_variation(request):
 
         'variation' : variation,
     }  
-    return render(request,'admins/manage_variation.html',context)  
+    return render(request,'admins/manage_variation.html',context)
 
+@user_passes_test(lambda u: u in acc, login_url = 'admin_login')
 def delete_variation(request,id):
     variation = Variation.objects.get(id=id)
     variation.delete()
     return redirect('manage_variation')
 
+@user_passes_test(lambda u: u in acc, login_url = 'admin_login')
 def add_variation(request):
     form = VariationForm
     if request.method == 'POST':
@@ -290,6 +299,7 @@ def add_variation(request):
 
     return render(request,'admins/add_variation.html',{'form':form})  
 
+@user_passes_test(lambda u: u in acc, login_url = 'admin_login')
 def edit_vatiation(request,id):
     variation = Variation.objects.get(id=id)
     form = VariationForm(instance=variation)
@@ -321,11 +331,13 @@ def manage_section(request):
     }
     return render(request,'admins/manage_section.html',context)
 
+@user_passes_test(lambda u: u in acc, login_url = 'admin_login')
 def delete_section(request,id):
     section = Section.objects.get(id=id)
     section.delete()
     return redirect('manage_section')
 
+@user_passes_test(lambda u: u in acc, login_url = 'admin_login')
 def edit_section(request,id):
     section = Section.objects.get(id=id)
     form = SectionForm(instance=section)
@@ -344,6 +356,7 @@ def edit_section(request,id):
     }       
     return render(request,'admins/add_section.html',context)
 
+@user_passes_test(lambda u: u in acc, login_url = 'admin_login')
 def add_section(request):
     form = SectionForm
     try:
@@ -375,6 +388,7 @@ def manage_brand(request):
     }
     return render(request,'admins/manage_brand.html',context)  
 
+@user_passes_test(lambda u: u in acc, login_url = 'admin_login')
 def edit_brand(request,id):
     brand = Brand.objects.get(id=id)
     form = BrandForm(instance=brand)
@@ -391,13 +405,15 @@ def edit_brand(request,id):
     context = {
         'form' : form
     }       
-    return render(request,'admins/add_brand.html',context)        
+    return render(request,'admins/add_brand.html',context) 
 
+@user_passes_test(lambda u: u in acc, login_url = 'admin_login')
 def delete_brand(request,id):
     brand = Brand.objects.get(id=id)
     brand.delete()
     return redirect('manage_brand')
 
+@user_passes_test(lambda u: u in acc, login_url = 'admin_login')
 def add_brand(request):
     form = BrandForm
     try:
@@ -432,6 +448,7 @@ def manage_order(request):
     }
     return render(request,'admins/manage_order.html',context)
 
+@user_passes_test(lambda u: u in acc, login_url = 'admin_login')
 def edit_order(request,id):
     order = Order.objects.get(id=id)
     form = OrderForm(instance=order)
@@ -486,7 +503,7 @@ def manage_review(request):
     }
     return render(request,'admins/manage_review.html',context)
 
-
+@user_passes_test(lambda u: u in acc, login_url = 'admin_login')
 def delete_review(request,id):
     review = Review.objects.get(id=id)
     review.delete()
