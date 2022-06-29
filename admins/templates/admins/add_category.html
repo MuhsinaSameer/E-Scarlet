@@ -32,14 +32,16 @@
               {% csrf_token %}
 
             
-            <div class="form-group">
-              <label for="exampleInputUsername1">Title</label>
-              <input type="text"  class="form-control" name="name" placeholder="title" style="color: azure;"> 
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Slug</label>
-              <input type="text" class="form-control" name="slug" placeholder="slug" style="color: azure;"> 
-            </div> 
+              <div class="form-group">
+                <label for="exampleInputUsername1">Title</label>
+                 <!-- <input type="text"  class="form-control" name="name" placeholder="title" style="color: azure;">     -->
+                <div class="col-sm-9">{{form.title}}</div>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Slug</label>
+                 <!-- <input type="text" class="form-control" name="slug" placeholder="slug" style="color: azure;">   -->
+                <div class="col-sm-9">{{form.slug}}</div>
+              </div>  
             
             <button type="submit" class="btn btn-primary mr-2">Submit</button>
           </form>
