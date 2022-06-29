@@ -754,7 +754,7 @@ def payment(request):
             tax = (2 * total)/100
             grand_total = total + tax         
         tax = (2 * total)/100
-        grand_total = int(total + tax) * 100
+        grand_total = int(total + tax) 
 
     client = razorpay.Client(auth=('rzp_test_O00DLaNWm5DhzQ','U2yAfr1hOJ6eYzGRQfX50Nqp'))
 
