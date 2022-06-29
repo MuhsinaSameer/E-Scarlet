@@ -132,6 +132,7 @@ def add_category(request):
             form = CategoryEditForm(request.POST)
             if form.is_valid():
                 form.save()
+                print('dfghjk')
                 return redirect('manage_category')
         return render (request,'admins/add_category.html',{'form' : form})  
     except:
