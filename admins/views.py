@@ -126,19 +126,17 @@ def edit_category(request,slug):
         
 
 def add_category(request):
+    form = CategoryEditForm
     try:
-        if request.method =='POST':
-            title = request.POST['title']
-            slug = request.POST['slug']
-            category = Category.objects.create(title=title,slug=slug)
-            category.save()
-            return redirect('manage_category')  
-            
-        return render(request,'admins/add_category.html')  
-
+        if request.method == 'POST':
+            form = CategoryEditForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('manage_categories')
+        return render (request,'admins/add_category.html',{'form' : form})  
     except:
-        messages.error(request, "Slug already exists.")       
-        return redirect('add_category')
+        messages.error(request,"Slug already exists.")  
+        return redirect(request,'add_category')
 
 @user_passes_test(lambda u: u in acc, login_url = 'admin_login')
 def manage_subcategory(request):
