@@ -462,7 +462,7 @@ def admin_login(request):
                 auth.login(request,user)
                 return redirect('admin_table')
 
-            auth.login(request,user)    
+              
         else:
             messages.error(request,'Invalid login credentials!!')  
             return redirect('admin_login')
