@@ -132,7 +132,7 @@ def add_category(request):
             form = CategoryEditForm(request.POST)
             if form.is_valid():
                 form.save()
-                return redirect('manage_categories')
+                return redirect('manage_category')
         return render (request,'admins/add_category.html',{'form' : form})  
     except:
         messages.error(request,"Slug already exists.")  
@@ -187,7 +187,7 @@ def add_subcategory(request):
             form = SubCategoryEditForm(request.POST)
             if form.is_valid():
                 form.save()
-                return redirect('manage_subcategories')
+                return redirect('manage_subcategory')
         return render (request,'admins/add_subcategory.html',{'form' : form})  
     except:
         messages.error(request,"Slug already exists.")  
