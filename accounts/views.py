@@ -607,7 +607,7 @@ def search_cart(request):
     if 'keyword' in request.GET:
         keyword = request.GET['keyword']
         if keyword:
-            items = CartItem.objects.order_by('-id').filter(Q(name__icontains=keyword))
+            items = CartItem.objects.order_by('-id').filter(Q(Product__name__icontains=keyword))
             item_count = items.count()
     context = {
         'items':items,
