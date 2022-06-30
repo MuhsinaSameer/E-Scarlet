@@ -602,19 +602,6 @@ def search(request):
     }
     return render(request,'accounts/shop.html',context)
 
-def search_cart(request):
-    products=0
-    if 'keyword' in request.GET:
-        keyword = request.GET['keyword']
-        if keyword:
-            item=CartItem.objects.filter(user=request.user)
-            items = item.objects.order_by('-id').filter(Q(Product__name__icontains=keyword))
-            item_count = items.count()
-    context = {
-        'items':items,
-        'item_count':item_count,
-    }
-    return render(request,'accounts/cart.html',context)
 
 @login_required(login_url='login')
 def checkout(request,total=0, quantity=0,cart_item=None):
