@@ -133,12 +133,12 @@
                                     <a href="checkout.html" class="dropdown-item">Checkout</a>
                                 </div>
                             </div> {% endcomment %}
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+                            {% comment %} <a href="contact.html" class="nav-item nav-link">Contact</a> {% endcomment %}
                         </div>
                         {% if user.is_authenticated %}
                         <div class="navbar-nav ml-auto py-0">
                             <a href="/accounts/login" class="nav-item nav-link">Logout</a>
-                            <a href="/accounts/register" class="nav-item nav-link">Register</a>
+                            {% comment %} <a href="/accounts/register" class="nav-item nav-link">Register</a> {% endcomment %}
                         </div>
                         {% else %}
                         <div class="navbar-nav ml-auto py-0">
