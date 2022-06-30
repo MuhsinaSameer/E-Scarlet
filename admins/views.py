@@ -49,7 +49,7 @@ def product_chart(request):
         'labels': labels,
         'data': data,
     })    
-     
+            
 def brand_chart(request):
     labels = []
     data = []  
