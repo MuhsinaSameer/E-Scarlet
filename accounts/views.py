@@ -794,7 +794,7 @@ def payment_status(request):
         'razorpay_signature' :  response['razorpay_signature'],
     }
     #create client instance
-    client = razorpay.Client(auth=('rzp_test_O00DLaNWm5DhzQ', 'U2yAfr1hOJ6eYzGRQfX50Nqp'))
+    client = razorpay.Client(auth=(settings.RAZORPAY_ID, settings.RAZORPAY_KEY))
 
     try:
         status = client.utility.verify_payment_signature(params_dict)
@@ -833,14 +833,14 @@ def payment_status(request):
 
         cart_items.delete()
 
-        # mail_subject = 'THANKYOU FOR SHOPPING WITH US'
-        # message = render_to_string('user/success.html',{
-        #     'user' : request.user,
+        mail_subject = 'THANKYOU FOR SHOPPING WITH US'
+        message = render_to_string('user/success.html',{
+            'user' : request.user,
 
-        # })
-        # to_email = request.user.email
-        # send_email = EmailMessage(mail_subject,message, to =[to_email])  
-        # send_email.send()
+        })
+        to_email = request.user.email
+        send_email = EmailMessage(mail_subject,message, to =[to_email])  
+        send_email.send()
 
         return render(request,'accounts/payment_status.html',{'status':True})
 
