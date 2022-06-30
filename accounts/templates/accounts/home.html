@@ -134,14 +134,15 @@
                         <div class="navbar-nav mr-auto py-0">
                             <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
                             <a href="{% url 'shop' %}" class="nav-item nav-link">Shop</a>
-                            <!-- <a href="detail.html" class="nav-item nav-link">Shop Detail</a> -->
-                            {% comment %} <div class="nav-item dropdown">
-                                {% comment %} <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a> {% endcomment %}
-                                {% comment %} <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="{% url 'cart' %}" class="dropdown-item">Shopping Cart</a>
-                                    <a href="checkout.html" class="dropdown-item">Checkout</a>
+   
+                             <div class="nav-item dropdown">
+                              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categories</a> 
+                               <div class="dropdown-menu rounded-0 m-0">
+                                {% for x in links %}
+                                <a href="{{ x.get_url }}" class="dropdown-item">{{x.title}}</a>
+                                {% endfor %} 
                                 </div>
-                            </div> {% endcomment %}
+                            </div> 
                             {% comment %} <a href="contact.html" class="nav-item nav-link">Contact</a> {% endcomment %}
                         </div>
                         {% if user.id is None %}
@@ -362,7 +363,7 @@
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3">{{sect.name}}</h6>
                         <div class="d-flex justify-content-center">
-                             <h6>₹{{sect.price}}</h6><h6 class="text-muted ml-2"></h6> 
+                             <h6>{{sect.price}}</h6><h6 class="text-muted ml-2"></h6> 
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">

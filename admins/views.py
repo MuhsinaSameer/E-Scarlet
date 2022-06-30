@@ -477,6 +477,9 @@ def admin_login(request):
             if user.is_superadmin:
                 auth.login(request,user)
                 return redirect('admin_table')
+            else:
+                messages.error(request,'Invalid login credentials!!')  
+                return redirect('admin_login')
               
         else:
             messages.error(request,'Invalid login credentials!!')  
