@@ -254,7 +254,7 @@
                 <div class="text-center mb-4">
                     <a href="{{ prod.get_url }}" style="color:black">{{prod.name}}</a><br>
                     <a href="{{ prod.get_url }}" style="color:black">{{prod.brand}}</a><br>
-                    <a href="{{ prod.get_url }}" style="color:black">${{prod.price}}</a>
+                    <a href="{{ prod.get_url }}" style="color:black">₹{{prod.price}}</a>
 
                     </div>
 
@@ -308,7 +308,7 @@
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3">{{sect.name}}</h6>
                         <div class="d-flex justify-content-center">
-                           <h6>${{sect.price}}</h6><h6 class="text-muted ml-2"></h6>
+                           <h6>₹{{sect.price}}</h6><h6 class="text-muted ml-2"></h6>
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
@@ -362,7 +362,7 @@
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3">{{sect.name}}</h6>
                         <div class="d-flex justify-content-center">
-                             <h6>{{sect.price}}</h6><h6 class="text-muted ml-2"></h6> 
+                             <h6>₹{{sect.price}}</h6><h6 class="text-muted ml-2"></h6> 
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
