@@ -511,3 +511,8 @@ def delete_review(request,id):
     review = Review.objects.get(id=id)
     review.delete()
     return redirect('manage_review')    
+
+def admin_logout(request):
+    auth.logout(request)
+    messages.success(request,'You were logged out!')
+    return redirect('home')    

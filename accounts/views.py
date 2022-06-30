@@ -744,6 +744,7 @@ def payment(request):
         quantity = 0
         tax = 0
         grand_total = 0
+        display =0
         for item in cart_items:
             if item.Product.discount:
                 disc_price =  item.Product.discount * item.quantity
@@ -755,8 +756,8 @@ def payment(request):
             tax = (2 * total)/100
             grand_total = total + tax         
         tax = (2 * total)/100
-        grand_total = int(total + tax) 
-
+        grand_total = int(total + tax) * 100
+        display =  int(total + tax) 
     client = razorpay.Client(auth=('rzp_test_O00DLaNWm5DhzQ','U2yAfr1hOJ6eYzGRQfX50Nqp'))
 
     # create order
@@ -783,7 +784,7 @@ def payment(request):
         'tax' : tax,
         'grand_total' : grand_total,
         'total' : total,
-       
+        'display' :display
     }
     return render(request,'accounts/razor.html',context)
 

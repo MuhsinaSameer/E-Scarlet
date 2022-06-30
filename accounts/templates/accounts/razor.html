@@ -127,13 +127,13 @@
                             <a href="{% url 'shop'%}" class="nav-item nav-link">Shop</a>
                             <!-- <a href="detail.html" class="nav-item nav-link">Shop Detail</a> -->
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                                <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="cart.html" class="dropdown-item">Shopping Cart</a>
-                                    <a href="checkout.html" class="dropdown-item">Checkout</a>
-                                </div>
-                            </div>
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categories</a> 
+                                 <div class="dropdown-menu rounded-0 m-0">
+                                  {% for x in links %}
+                                  <a href="{{ x.get_url }}" class="dropdown-item">{{x.title}}</a>
+                                  {% endfor %} 
+                                  </div>
+                              </div> 
                         </div>
                         {% if user.id is None %}
                         <div class="navbar-nav ml-auto py-0">
@@ -176,7 +176,7 @@
                     <ul>
                         <li>Subtotal<span style="padding: 250px;">:₹ {{total}}</span></li>
                         <li>Tax<span style="padding: 290px;">:₹ {{tax}}</span></li>
-                        <li>Total<span style="padding: 278px;">:₹  {{grand_total}}</span></li>
+                        <li>Total<span style="padding: 278px;">:₹  {{display}}</span></li>
                     </ul>
                 </div>
                 <div class="checkout_order_widget">
@@ -192,7 +192,7 @@
                             data-currency="{{ paym.currency}}"
                             data-order_id="{{ paym.id}}"
                             data-buttontext="Pay with Razorpay"   
-                            data-name="Scarlet"    
+                            data-name="E-Scarlet"    
                             data-description=""    
                             data-image="https://example.com/your_logo.jpg"    
                             data-prefill.name="{{user.user.first_name}}"    

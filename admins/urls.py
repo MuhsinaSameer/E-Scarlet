@@ -36,4 +36,5 @@ urlpatterns= [
     path('admin_login/',views.admin_login,name='admin_login'),
     path('manage_review/',views.manage_review,name='manage_review'),
     path('delete_review/<int:id>/',views.delete_review,name='delete_review'),
+    path('admin_logout/',views.admin_logout,name='admin_logout'),
 ]   
