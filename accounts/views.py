@@ -826,9 +826,8 @@ def payment_status(request):
             # pro_data.variation = x.variation
             pro_data.product_price= x.Product.price
             pro_data.ordered = True
-            print("hhhhhhhhh")
             pro_data.save()
-
+            
             pr = x.Product
             Product = product.objects.get(id=pr.id)
             Product.stock -= x.quantity
