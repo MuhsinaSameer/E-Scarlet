@@ -543,7 +543,8 @@ def remove_cart_item(request,product_id,cart_item_id):
         cart_item = CartItem.objects.get(Product=Product, cart=cart, id=cart_item_id) 
     cart_item.delete()
     return redirect('cart')  
-
+    
+@login_required(login_url='login')
 def cart(request,total =0, quantity=0,discount = 0,cart_items=None):
     try:
         disc_price =0
@@ -736,7 +737,7 @@ def place_order(request,total=0,quantity=0,discount=0):
         return redirect('shop')
 
 def payment(request):
-    
+    grand_total = 0
     current_user = request.user     
     cart_items = CartItem.objects.filter(user=current_user) 
     if cart_items :
@@ -758,7 +759,7 @@ def payment(request):
         tax = (2 * total)/100
         grand_total = int(total + tax) * 100
         display =  int(total + tax) 
-    client = razorpay.Client(auth=('rzp_test_O00DLaNWm5DhzQ','U2yAfr1hOJ6eYzGRQfX50Nqp'))
+    client = razorpay.Client(auth=(settings.RAZORPAY_ID,settings.RAZORPAY_KEY))
 
     # create order
     response_payment = client.order.create(dict(amount=grand_total, currency = 'INR'))
@@ -796,7 +797,7 @@ def payment_status(request):
         'razorpay_signature' :  response['razorpay_signature'],
     }
     #create client instance
-    client = razorpay.Client(auth=('rzp_test_O00DLaNWm5DhzQ', 'U2yAfr1hOJ6eYzGRQfX50Nqp'))
+    client = razorpay.Client(auth=(settings.RAZORPAY_ID,settings.RAZORPAY_KEY))
 
     try:
         status = client.utility.verify_payment_signature(params_dict)
@@ -822,10 +823,10 @@ def payment_status(request):
             pro_data.Product_id = x.Product_id
             pro_data.quantity = x.quantity
             pro_data.payment = payment
-            pro_data.variation = x.variation
+            # pro_data.variation = x.variation
             pro_data.product_price= x.Product.price
             pro_data.ordered = True
-            
+            print("hhhhhhhhh")
             pro_data.save()
 
             pr = x.Product
@@ -836,7 +837,7 @@ def payment_status(request):
         cart_items.delete()
 
         mail_subject = 'THANKYOU FOR SHOPPING WITH US'
-        message = render_to_string('user/success.html',{
+        message = render_to_string('accounts/success.html',{
             'user' : request.user,
 
         })
@@ -847,6 +848,7 @@ def payment_status(request):
         return render(request,'accounts/payment_status.html',{'status':True})
 
     except:
+        print("gfhfd")
         payment = Payment.objects.get(order_id = response['razorpay_order_id'])
         payment.payment_id = response['razorpay_payment_id']
         payment.paid = True
@@ -873,7 +875,7 @@ def payment_status(request):
             
             pro_data.save()
 
-            return render(request,'accounts/payment_status.html',{'status':False})
+        return render(request,'accounts/payment_status.html',{'status':False})
 
 @login_required(login_url='login')
 def wish_add(request, id):

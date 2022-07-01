@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Corona Admin</title>
+    <title>E-Scarlet</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{% static 'admins/vendors/mdi/css/materialdesignicons.min.css' %}">
     <link rel="stylesheet" href="{% static 'admins/vendors/css/vendor.bundle.base.css' %}">
@@ -44,43 +44,9 @@
                   <span>Gold Member</span>
                 </div>
               </div>
-              {% comment %} <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
-              <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
-                <a href="#" class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-dark rounded-circle">
-                      <i class="mdi mdi-settings text-primary"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <p class="preview-subject ellipsis mb-1 text-small">Account settings</p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-dark rounded-circle">
-                      <i class="mdi mdi-onepassword  text-info"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-dark rounded-circle">
-                      <i class="mdi mdi-calendar-today text-success"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
-                  </div>
-                </a>
-              </div>
+             
             </div>
-          </li> {% endcomment %}
+          </li>
           <li class="nav-item nav-category">
             <span class="nav-link">Navigation</span>
           </li>
@@ -170,6 +136,14 @@
                 <i class="mdi mdi-playlist-play"></i>
               </span>
               <span class="menu-title">Review</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="{% url 'manage_variation' %}">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+              <span class="menu-title">Variation</span>
             </a>
           </li>
         </ul>
@@ -384,9 +358,12 @@
                         {% comment %} <h4 class="mb-1 mb-sm-0">Want even more features?</h4> {% endcomment %}
                         <p class="mb-0 font-weight-normal d-none d-sm-block"></p>
                       </div>
+                      <a href="{% url 'admin_logout' %}"><button style="color:#aab2bd;background:#2c2e33" class="site_btn">Logout</button> </a>
                       <div class="col-3 col-sm-2 col-xl-2 pl-0 text-center">
                         <span>
-                          <input type="text" class="form-control" placeholder="Search" style="color: aliceblue;">
+                          <form  class="search-form" action="#">
+                            <input type="text" name="q" class="form-control" placeholder="Search" style="color: aliceblue; width:300px">
+                            </form>
                         </span>
                       </div>
                     </div>
