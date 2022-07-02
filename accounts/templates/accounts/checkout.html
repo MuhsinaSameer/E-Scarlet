@@ -141,7 +141,7 @@
                         </div>
                         {% else %}
                         <div class="navbar-nav ml-auto py-0">
-                            <a href="/accounts/logout" class="nav-item nav-link">Logout</a>
+                            <a href="{% url 'logout' %}" class="nav-item nav-link">Logout</a>
                             {% comment %} <a href="" class="nav-item nav-link">Dashboard</a> {% endcomment %}
                         </div>
 
@@ -169,16 +169,7 @@
     <!-- Page Header End -->
 
 
-    {% if messages %}
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-     {% for message in messages %}
-     {{ message }}
-     {% endfor%}
-     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-       {% comment %} <span aria-hidden="true">&times;</span> {% endcomment %}
-     </button>
-   </div>
-   {% endif %}
+   
     <div class="container-fluid pt-5">
         <div class=" row px-xl-5">
             <div class="card col-lg-6 table-responsive mb-5">

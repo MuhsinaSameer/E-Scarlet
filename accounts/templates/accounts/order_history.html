@@ -62,7 +62,7 @@
          <div class="row align-items-center py-3 px-xl-5"> 
             <div class="col-lg-3 d-none d-lg-block">
                 <a href="{% url 'home' %}" class="text-decoration-none">
-                    <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1"></span>Scarlet</h1>
+                    <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Scarlet</h1>
                 </a>
             </div>
             <!-- <div class="col-lg-6 col-6 text-left">
@@ -116,7 +116,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="pull-right"><label class="label label-info">{{x.order.status}}</label></div>
-                            <span><strong>{{x.Product.name}}</strong></span><br />
+                            <a href="{{ x.Product.get_url }}"><span><strong>{{x.Product.name}}</strong></span><br /></a>
                             Quantity :{{x.quantity}}<br> cost: ₹{{x.product_price}}<br />
                             <!-- <a data-placement="top" class="btn btn-success btn-xs glyphicon glyphicon-ok" href="#" title="View"></a>
                             <a data-placement="top" class="btn btn-danger btn-xs glyphicon glyphicon-trash" href="#" title="Danger"></a>

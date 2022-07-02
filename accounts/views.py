@@ -172,7 +172,7 @@ def login(request):
             except:    
                 pass    
             auth.login(request,user)
-            messages.success(request,'You are now logged in')
+            messages.success(request,'You are now logged in')            
             url = request.META.get('HTTP_REFERER')
             try:
                 query = requests.utils.urlparse(url).query
@@ -544,7 +544,6 @@ def remove_cart_item(request,product_id,cart_item_id):
     cart_item.delete()
     return redirect('cart')  
     
-@login_required(login_url='login')
 def cart(request,total =0, quantity=0,discount = 0,cart_items=None):
     try:
         disc_price =0
