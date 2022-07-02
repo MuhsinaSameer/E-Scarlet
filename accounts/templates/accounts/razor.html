@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>EShopper - Bootstrap Shop Template</title>
+    <title>E-Scarlet</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -26,7 +26,7 @@
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
 </head>
 
-<body>
+<body style="background-color: rgb(251, 236, 215);">
     <!-- Topbar Start -->
     <div class="container-fluid">
         <div class="row bg-secondary py-2 px-xl-5">
@@ -61,7 +61,7 @@
         </div>
         <div class="row align-items-center py-3 px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
-                <a href="" class="text-decoration-none">
+                <a href="{% url 'home' %}" class="text-decoration-none">
                     <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Scarlet</h1>
                 </a>
             </div>
@@ -78,11 +78,11 @@
                 </form>
             </div>
             <div class="col-lg-3 col-6 text-right">
-                <a href="" class="btn border">
+                <a href="{% url 'wish_list' %}" class="btn border">
                     <i class="fas fa-heart text-primary"></i>
                     <span class="badge">0</span>
                 </a>
-                <a href="/accounts/cart" class="btn border">
+                <a href="{% url 'cart' %}" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
                     <span class="badge">{{cart_count}}</span>
                 </a>
@@ -123,8 +123,8 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="{% url 'home'%}" class="nav-item nav-link active">Home</a>
-                            <a href="{% url 'shop'%}" class="nav-item nav-link">Shop</a>
+                            <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
+                            <a href="{% url 'shop' %}" class="nav-item nav-link">Shop</a>
                             <!-- <a href="detail.html" class="nav-item nav-link">Shop Detail</a> -->
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categories</a> 
@@ -152,13 +152,13 @@
             </div>
         </div>
     </div>
- <div class="card border-secondary mb-6">  
+ <div class="card border-secondary mb-6" style="height:190px">  
          <div class="col-log-6"> 
-             <div class="card-header bg-secondary border-0" style="width: fit-content;"> 
-                <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
+             <div class="card-header bg-secondary border-0" style="width: 100%;"> 
+                <h4 class="font-weight-semi-bold m-0" style="text-align:center">Billing Details</h4><hr>
                 <div class="checkout_order_product">
-                    <ul>
-                        <li>
+                    {% comment %} <ul>
+                        <li style="margin-top:25px">
                            
                             <span class="top_text">Product</span>
                             <span class="top_text_right" style="padding: 250px">Total</span> 
@@ -170,15 +170,15 @@
                         <li>{{item.Product.brand }}{{ item.Product.name}} x {{item.quantity}}<span style="padding: 120px;">:₹ {{item.sub_total}} {{item.tax}} {{item.grand_total}}</span></li>
                         {% endif %}
                         {% endfor %}
-                    </ul>
+                    </ul> {% endcomment %}
                 </div>
-                <div class="checkout_order_total">
-                    <ul>
-                        <li>Subtotal<span style="padding: 250px;">:₹ {{total}}</span></li>
-                        <li>Tax<span style="padding: 290px;">:₹ {{tax}}</span></li>
-                        <li>Total<span style="padding: 278px;">:₹  {{display}}</span></li>
-                    </ul>
-                </div>
+                <div class="checkout_order_total" style="margin-top:25px;text-align:center">
+                    
+                        <h4>Subtotal<span style="text:bold"> : ₹ {{total}}</span></h4>
+                        <h6>Tax<span> : ₹ {{tax}}</span></h6>
+                        <h4>Total<span> : ₹  {{display}}</span></h4><br>
+                    
+                
                 <div class="checkout_order_widget">
 
                 </div>
@@ -203,10 +203,11 @@
     
                 {% endif %}
             </div>
+            </div>
         </div>
-        <</div> 
+        </div> 
     </div>
-</div>            
+</div><hr>         
 
 <!-- Cart End -->
 
@@ -248,7 +249,7 @@
     <div class="row border-top border-light mx-xl-5 py-4">
         <div class="col-md-6 px-xl-0">
             <p class="mb-md-0 text-center text-md-left text-dark">
-                &copy; <a class="text-dark font-weight-semi-bold" href="#">sScarlet</a>. All Rights Reserved. Designed
+                &copy; <a class="text-dark font-weight-semi-bold" href="#">E-Scarlet</a>. All Rights Reserved. Designed
                 by
                 <a class="text-dark font-weight-semi-bold" href="https://htmlcodex.com">HTML Codex</a><br>
             </p>

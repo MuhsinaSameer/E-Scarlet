@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>EShopper - Bootstrap Shop Template</title>
+    <title>E-Scarlet</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -26,7 +26,7 @@
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
 </head>
 
-<body>
+<body style="background-color: rgb(251, 236, 215);">
     <!-- Topbar Start -->
     <div class="container-fluid">
         <div class="row bg-secondary py-2 px-xl-5">
@@ -61,7 +61,7 @@
         </div>
         <div class="row align-items-center py-3 px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
-                <a href="" class="text-decoration-none">
+                <a href="{% url 'home' %}" class="text-decoration-none">
                     <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Scarlet</h1>
                 </a>
             </div>
@@ -78,10 +78,10 @@
                 </form>
             </div>
             <div class="col-lg-3 col-6 text-right">
-                <a href="" class="btn border">
+                <a href="{% url 'wish_list' %}" class="btn border">
                     <i class="fas fa-heart text-primary"></i>
                 </a>
-                <a href="/accounts/cart" class="btn border">
+                <a href="{% url 'cart' %}" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
                     <span class="badge">{{cart_count}}</span>
                 </a>
@@ -186,7 +186,7 @@
         <div class=" row px-xl-5">
             <div class="card col-lg-6 table-responsive mb-5">
                 <div class="card-body">
-                    <h4 class="card-title mb-4">Billing Address</h4> 
+                    <h4 class="card-title mb-4" style="text-align:center">Billing Address</h4> 
                 </div>
                 <div style="border:none" class="card-body">
                     <h5 class="card-title">Address</h5>
@@ -202,10 +202,10 @@
         <div class="card border-secondary mb-6"> 
             <div class="col-log-6">
                 <div class="card-header bg-secondary border-0">
-                    <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
+                    <h4 class="font-weight-semi-bold m-0" style="text-align:center">Billing Details</h4>
                     <div class="checkout_order_product">
                         <ul>
-                            <li>
+                            <li style="margin-top:25px">
                                
                                 <span class="top_text">Product</span>
                                 <span class="top_text_right" style="padding: 170px">Total</span> 

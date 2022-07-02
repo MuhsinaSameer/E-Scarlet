@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>EShopper - Bootstrap Shop Template</title>
+    <title>E-Scarlet</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -61,7 +61,7 @@
         </div>
         <div class="row align-items-center py-3 px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
-                <a href="" class="text-decoration-none">
+                <a href="{% url 'home' %}" class="text-decoration-none">
                     <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Scarlet</h1>
                 </a>
             </div>
@@ -161,10 +161,14 @@
                         <div class="col-lg-4 col-md-7 col-sm-12 pb-1">
                             <div class="card product-item border-0 mb-4">
                                 <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                    <a href="{{ sect.get_url }}" class="text-center">
                                     <img class="{% static 'img-fluid w-100' %}" src={{sub_cat.image.url}} alt="">
+                                    </a>
                                 </div> 
                                 <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                    <a href="{{ sect.get_url }}" class="text-center">
                                     <h6 class="text-truncate mb-3">{{sub_cat.name}}</h6>
+                                    </a>
                                     <div class="d-flex justify-content-center">
                                        <h6>₹{{sub_cat.price}}</h6><h6 class="text-muted ml-2"></h6>
                                     </div>
