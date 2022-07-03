@@ -40,9 +40,9 @@ class RegistrationForm(forms.ModelForm):
             raise forms.ValidationError(
                 "Password must contain minimum 8 characters"
             )
-            
+
 class VerifyForm(forms.Form):
-    code = forms.CharField(max_length=8, required=True, help_text='')            
+    OTP = forms.CharField(max_length=8, required=True, help_text='')            
 
            
 class AddressForm(forms.ModelForm):
