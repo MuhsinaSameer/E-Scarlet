@@ -961,6 +961,7 @@ def review(request,id):
     Product = product.objects.get(id=Product_id)
     form = ReviewForm(initial={'user' : request.user, 'Product':Product})
     images = None
+    review = None
     if request.method == 'POST':
         if request.FILES:            
             images = request.FILES['image']
