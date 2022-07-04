@@ -565,10 +565,8 @@ def cart(request,total =0, quantity=0,discount = 0,cart_items=None):
                 total += cart_item.Product.discount * cart_item.quantity
                 quantity += cart_item.quantity
              
-
             else:  
 
-                print("guarewgtia")
                 price = cart_item.Product.price * cart_item.quantity      
                 quantity += cart_item.quantity  
                 total  += cart_item.Product.price * cart_item.quantity  
