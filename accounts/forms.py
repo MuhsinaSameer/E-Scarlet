@@ -42,7 +42,7 @@ class RegistrationForm(forms.ModelForm):
             )
 
 class VerifyForm(forms.Form):
-    OTP = forms.CharField(max_length=8, required=True, help_text='')            
+    code = forms.CharField(max_length=8, required=True, help_text='')            
 
            
 class AddressForm(forms.ModelForm):

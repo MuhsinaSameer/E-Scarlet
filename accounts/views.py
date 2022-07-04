@@ -64,10 +64,12 @@ def verify_code(request):
     if request.method == 'POST':
         form = VerifyForm(request.POST)
         if form.is_valid():
+            print('dfghj')
             code = form.cleaned_data.get('code')
             phone_number = request.session['phone_number']
-            user = Account.objects.get(phone_number = phone_number)
+            
             if check(phone_number, code):
+                user = Account.objects.get(phone_number = phone_number)
                 print('gbhn')
                 user.is_active = True
                 user.save()
