@@ -211,7 +211,8 @@
                         <i class="fa fa-star"></i>
                         {% endif %}
                         {% if rating %}
-                        <span style="color:black"> ({{ rating }}/5)</span>
+                        <h6>Customer Rating: <span style="color:black"> ({{ rating }}/5)</span></h6>
+                        
                         {% endif %}
                         <br><br>
                     </div>
@@ -338,6 +339,7 @@
                             {% endif %}
                            
                            <div class="media-body">
+                               
                                 <div style="color:gold;" class="rating">
                                     {% if x.rating >= '1' %}
                                     <i class="fa fa-star"></i>
@@ -355,6 +357,7 @@
                                     <i class="fa fa-star"></i>
                                     {% endif %}
                                     {% if x.rating %}
+                                   
                                     <span style="color:black"> ({{ x.rating }}/5)</span>
                                     {% endif %}
                                     <br><br>

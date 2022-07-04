@@ -960,24 +960,25 @@ def review(request,id):
     Product_id = ob.Product_id
     Product = product.objects.get(id=Product_id)
     form = ReviewForm(initial={'user' : request.user, 'Product':Product})
-
+    image = None
     if request.method == 'POST':
-       images = request.FILES['image']
-       review = request.POST['review']
-       if 'star' in request.POST:
+        if request.FILES:            
+            images = request.FILES['image']
+            review = request.POST['review']
+        if 'star' in request.POST:
            rating = request.POST['star']
-       else:
+        else:
            rating = None   
 
-       data = Review()
-       data.user = request.user
-       data.Product = Product
-       data.image = images
-       data.review = review
-       data.rating = rating
-       data.save()
-       messages.success(request,'Review updated successfully')
-       return redirect('order_history')
+        data = Review()
+        data.user = request.user
+        data.Product = Product
+        data.image = images
+        data.review = review
+        data.rating = rating
+        data.save()
+        messages.success(request,'Review updated successfully')
+        return redirect('order_history')
 
     context = {
 

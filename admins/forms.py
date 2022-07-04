@@ -37,8 +37,8 @@ class productCreateForm(forms.ModelForm):
 class VariationForm(forms.ModelForm):
     class Meta:
         model = Variation 
-        fields = ['variation_category','variation_value']      
-
+        fields = '__all__'
+        
 class SectionForm(forms.ModelForm):
     class Meta:
         model = Section
