@@ -973,7 +973,8 @@ def review(request,id):
         data = Review()
         data.user = request.user
         data.Product = Product
-        data.image = images
+        if images:  
+            data.image = images
         data.review = review
         data.rating = rating
         data.save()
